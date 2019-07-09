@@ -7,7 +7,7 @@ import org.apache.spark.sql.{Column, DataFrame, SparkSession}
 import scala.concurrent.ExecutionContext.Implicits.global
 
 object Main {
-  implicit val system       = ActorSystem("http-client")
+  implicit val system       = ActorSystem("name-affinity")
   implicit val materializer = ActorMaterializer()
 
   //columns
@@ -49,11 +49,11 @@ object Main {
     val nomi_italiani = readCsv("nomi_italiani.csv")
 
     val commonName: DataFrame = nomi_iban.join(nomi_italiani, columnName)
-    println("commonName -> " + commonName.count())
+    println("common_name -> " + commonName.count())
 
-    val affinty = dataFrameWithAlphabetCount(commonName)
-    affinty.write.format("csv").save("affinity.csv")
-    affinty.show(40)
+    val affinity = dataFrameWithAlphabetCount(commonName)
+    affinity.write.format("csv").save("affinity.csv")
+    affinity.show(40)
 
     println("Shutting down...")
     Http().shutdownAllConnectionPools().foreach(_ => system.terminate)
