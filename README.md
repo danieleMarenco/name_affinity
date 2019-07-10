@@ -8,11 +8,11 @@ the second file with  9k rows (Italian names) <br>
 
 2) analysis the data with Spark and add one column for count letters in the whole word
 
-3) adds other column for count how many alphabet letters there are in the this word.
+3) adds other columns for count how many alphabet letters there are in the this word.
 
-4) adds other column for sum number delle letters da A a Z 
+4) add other column for sum number delle letters da A a Z 
 
-5) checksum to check that point 2 and 4 are the same
+5) last column for checksum to check that point 2 and 4 are the same
 
 6) I expose the result with "affinity.csv" only for a visual matter
 
